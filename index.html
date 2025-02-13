@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Circuit Matrix</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+        canvas { display: block; position: absolute; top: 0; left: 0; }
+    </style>
+</head>
+<body>
+    <canvas id="matrixCanvas"></canvas>
+    <canvas id="circuitCanvas"></canvas>
+
+    <script>
+        // MATRIX CODE RAIN EFFECT
+        const matrixCanvas = document.getElementById("matrixCanvas");
+        const matrixCtx = matrixCanvas.getContext("2d");
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const chars = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ @#$%^&*()_+-=[]{}|;:<>?,./";
+        const charArray = chars.split("");
+        const fontSize = 14;
+        const columns = Math.floor(matrixCanvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function drawMatrix() {
+            matrixCtx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            matrixCtx.fillStyle = "white"; // Teal/Cyan glowing text
+            matrixCtx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                matrixCtx.fillText(text, x, y);
+
+                if (y > matrixCanvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // CIRCUIT BOARD CONNECTIONS
+        const circuitCanvas = document.getElementById("circuitCanvas");
+        const circuitCtx = circuitCanvas.getContext("2d");
+        circuitCanvas.width = window.innerWidth;
+        circuitCanvas.height = window.innerHeight;
+
+        let paths = [];
+
+        class Path {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.history = [{ x, y }];
+                this.direction = Math.floor(Math.random() * 4);
+            }
+
+            update() {
+                let step = 10;
+                switch (this.direction) {
+                    case 0: this.x += step; break;  // Right
+                    case 1: this.x -= step; break;  // Left
+                    case 2: this.y += step; break;  // Down
+                    case 3: this.y -= step; break;  // Up
+                }
+                this.history.push({ x: this.x, y: this.y });
+
+                if (Math.random() > 0.9) {
+                    this.direction = Math.floor(Math.random() * 4);
+                }
+            }
+
+            draw() {
+                circuitCtx.beginPath();
+                //circuitCtx.strokeStyle = "#00ffee"; //
+                circuitCtx.strokeStyle = "black"; //
+                circuitCtx.lineWidth = 1;
+                circuitCtx.shadowBlur = 5;
+                circuitCtx.shadowColor = "white";
+                for (let i = 0; i < this.history.length - 1; i++) {
+                    circuitCtx.moveTo(this.history[i].x, this.history[i].y);
+                    circuitCtx.lineTo(this.history[i + 1].x, this.history[i + 1].y);
+                }
+                circuitCtx.stroke();
+            }
+        }
+
+        function initPaths() {
+            for (let i = 0; i < 10; i++) { // Fewer paths to avoid clutter
+                paths.push(new Path(Math.random() * circuitCanvas.width, Math.random() * circuitCanvas.height));
+            }
+        }
+
+        function animateCircuits() {
+            circuitCtx.clearRect(0, 0, circuitCanvas.width, circuitCanvas.height);
+            for (let path of paths) {
+                path.update();
+                path.draw();
+            }
+            requestAnimationFrame(animateCircuits);
+        }
+
+        initPaths();
+        animateCircuits();
+
+        window.addEventListener("resize", () => {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            circuitCanvas.width = window.innerWidth;
+            circuitCanvas.height = window.innerHeight;
+            paths = [];
+            initPaths();
+        });
+    </script>
+</body>
+</html>
