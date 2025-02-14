@@ -26,24 +26,39 @@
         // MATRIX CODE RAIN EFFECT
         const matrixCanvas = document.getElementById("matrixCanvas");
         const matrixCtx = matrixCanvas.getContext("2d");
-        matrixCanvas.width = window.innerWidth;
-        matrixCanvas.height = window.innerHeight;
+
+        function resizeCanvas() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            fontSize = Math.max(12, Math.floor(matrixCanvas.width / 100)); // Adjust font size based on width
+            columns = Math.floor(matrixCanvas.width / fontSize);
+            drops = Array(columns).fill(1);
+        }
+
+        let fontSize;
+        let columns;
+        let drops;
+
+        resizeCanvas();
 
         const chars = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ @#$%^&*()_+-=[]{}|;:<>?,./";
         const charArray = chars.split("");
-        const fontSize = 14;
-        const columns = Math.floor(matrixCanvas.width / fontSize);
-        const drops = Array(columns).fill(1);
+
+        // Define the message you want to display
+        const message = "WELCOME TO MY PAGE";
+        const messageArray = message.split("");
+        let messageIndex = 0;
 
         function drawMatrix() {
             matrixCtx.fillStyle = "rgba(0, 0, 0, 0.05)";
             matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
-            matrixCtx.fillStyle = "white"; // Teal/Cyan glowing text
+            matrixCtx.fillStyle = "#ff0000"; // Blood red text
             matrixCtx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                // Use characters from the message instead of random ones
+                const text = messageArray[messageIndex];
                 const x = i * fontSize;
                 const y = drops[i] * fontSize;
 
@@ -53,8 +68,12 @@
                     drops[i] = 0;
                 }
                 drops[i]++;
+
+                // Cycle through the message
+                messageIndex = (messageIndex + 1) % messageArray.length;
             }
         }
+
         setInterval(drawMatrix, 50);
 
         // CIRCUIT BOARD CONNECTIONS
@@ -121,14 +140,7 @@
         initPaths();
         animateCircuits();
 
-        window.addEventListener("resize", () => {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-            circuitCanvas.width = window.innerWidth;
-            circuitCanvas.height = window.innerHeight;
-            paths = [];
-            initPaths();
-        });
+        window.addEventListener("resize", resizeCanvas);
     </script>
 </body>
 </html>
