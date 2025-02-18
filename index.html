@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Circuit Matrix</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body>
+<body> 
     <div class="container">
-        <canvas id="matrixCanvas"></canvas>
-        <canvas id="circuitCanvas"></canvas>
+    <canvas id="matrixCanvas"></canvas>
+    <canvas id="circuitCanvas"></canvas>
         <div class="intro-sequence">
             <div class="line-animation"></div>
             <div class="name-reveal">
@@ -21,11 +22,28 @@
                 <h1>Kesiena Berezi</h1>
                 <h2>Tech Enthusiast</h2>
                 <div class="button-container">
-                    <button class="about-trigger">About Me</button>
-                    <button class="projects-trigger">Projects</button>
+                    <button class="glow-button">
+                        <i class="fas fa-code"></i> Projects
+                    </button>
                 </div>
             </div>
+            <div class="about-corner-button">
+                <button class="glow-button">
+                    <i class="fas fa-user"></i> About Me
+                </button>
+            </div>
+            <div class="skills-corner-button">
+                <button class="glow-button">
+                    <i class="fas fa-brain"></i> Skills
+                </button>
+            </div>
+            <div class="resume-button">
+                <button class="glow-button" id="resume-trigger">
+                    <i class="fas fa-file-alt"></i> Resume
+                </button>
+            </div>
         </div>
+        
     </div>
 
     <div class="about-section">
@@ -39,13 +57,20 @@
                     <p class="typing">> Initializing profile data...</p>
                     <p class="typing-delay-2">> I am a tech enthusiast with a dream to change the world</p>
                     <p class="typing-delay-3">> Big Time Arsenal FC Fan </p>
+                    <p class="typing-delay-4">> Incase you havent noticed my favorite color is green</p>
+                    <p class="typing-delay-5">> I also like to play video games and watch anime</p>
+
+    
                     <p class="typing-delay-1">> Loading skills and interests...</p>
                     
                     <p class="typing-delay-3">> Core competencies include:</p>
                     <ul class="skills-list typing-delay-4">
                         <li>AI/Machine Learning</li>
+                        <li>FIFA</li>
                         <li>Software Development</li>
+                        <li>Arsenal FC</li>
                         <li>Cloud Engineering</li>
+                        
                         <li>Data Science</li>
                     </ul>
                     <p class="typing-delay-5">> Currently exploring the intersections of technology and creativity</p>
@@ -60,9 +85,16 @@
             <button class="close-button">×</button>
             <div class="section-header">
                 <h2>./projects.sys</h2>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="featured">Featured</button>
+                    <button class="filter-btn" data-filter="in-progress">In Progress</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                    <button class="filter-btn" data-filter="help-needed">Help Needed</button>
+                </div>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-category="in-progress featured" data-skills="flutter,javascript,sql">
                     <div class="project-header">
                         <span class="status-dot"></span>
                         <h3>Telemetry Application</h3>
@@ -88,9 +120,7 @@
                     </div>
                 </div>
 
-                <!-- More project cards with the same structure -->
-                <div class="project-card">
-                    <!-- Similar structure for other projects -->
+                <div class="project-card" data-category="completed" data-skills="python,sql,machine-learning,data-science">
                     <div class="project-header">
                         <span class="status-dot"></span>
                         <h3>Credit Score Prediction Model</h3>
@@ -109,10 +139,305 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">AI-Assited Development</span>
                             <span class="tech-tag">Data Science</span>
+                            <span class="tech-tag">Machine Learning</span>
                         </div>
                         <div class="project-footer">
                             <a href="#" class="project-link">View Source <span class="arrow">→</span></a>
                         </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="completed featured" data-skills="python,machine-learning">
+                    <div class="project-header">
+                        <span class="status-dot"></span>
+                        <h3>Bee Hive Agent</h3>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Trained an RL Model on the Bee Hive(Reversi) Game to learn optimal strategies.</p>
+                        <div class="progress-container">
+                            <div class="progress-label">Completion</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                                <div class="progress-glow"></div>
+                            </div>
+                            <div class="progress-percentage">100%</div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI-Assited Development</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">View Source <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="resume-section">
+        <div class="resume-container">
+            <button class="close-button">×</button>
+            <div class="section-header">
+                <h2>./resume.doc</h2>
+            </div>
+            <div class="resume-content">
+                <iframe src="https://docs.google.com/document/d/e/2PACX-1vSvkOsQEIvGBSZFN1RfcEItukQo_LOx7DqUMJWmadBUffSGRRqZEVr0yXaoTX-LJ6XHhuU8Atcdm3Hw/pub?embedded=true" 
+                        frameborder="0"
+                        width="100%"
+                        height="100%">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills-section">
+        <div class="skills-container">
+            <button class="close-button">×</button>
+            <div class="section-header">
+                <h2>./skills.exe</h2>
+                <div class="skills-filters">
+                    <button class="skill-filter-btn active" data-filter="all">All</button>
+                    <button class="skill-filter-btn" data-filter="languages">Languages</button>
+                    <button class="skill-filter-btn" data-filter="frameworks">Frameworks</button>
+                    <button class="skill-filter-btn" data-filter="tools">Tools</button>
+                    <button class="skill-filter-btn" data-filter="soft">Soft Skills</button>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <!-- Languages -->
+                <div class="skill-card" data-category="languages" data-skill="python">
+                    <div class="skill-header">
+                        <i class="fab fa-python"></i>
+                        <h3>Python</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">2 Projects</span>
+                    </div>
+                </div>
+             <div class="skill-card" data-category="languages" data-skill="javascript">
+                    <div class="skill-header">
+                        <i class="fab fa-js"></i>
+                        <h3>Javascript</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                 <div class="skill-card" data-category="languages" data-skill="java">
+                    <div class="skill-header">
+                        <i class="fab fa-java"></i>
+                        <h3>Java</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                 <div class="skill-card" data-category="languages" data-skill="dart">
+                    <div class="skill-header">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Dart</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                 <div class="skill-card" data-category="languages" data-skill="cpp">
+                    <div class="skill-header">
+                        <i class="fas fa-code"></i>
+                        <h3>C++</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                 <div class="skill-card" data-category="languages" data-skill="sql">
+                    <div class="skill-header">
+                        <i class="fas fa-database"></i>
+                        <h3>SQL</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="skill-card" data-category="frameworks" data-skill="react">
+                    <div class="skill-header">
+                        <i class="fab fa-react"></i>
+                        <h3>React</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-category="frameworks" data-skill="flutter">
+                    <div class="skill-header">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Flutter</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-category="frameworks" data-skill="flask">
+                    <div class="skill-header">
+                        <i class="fab fa-python"></i>
+                        <h3>Flask</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+
+
+                <div class="skill-card" data-category="tools" data-skill="git">
+                    <div class="skill-header">
+                        <i class="fab fa-git-alt"></i>
+                        <h3>Git</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-category="tools" data-skill="azure">
+                    <div class="skill-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Azure</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-category="tools" data-skill="gcp">
+                    <div class="skill-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3>GCP</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-category="tools" data-skill="kubernetes">
+                    <div class="skill-header">
+                        <i class="fas fa-dharmachakra"></i>
+                        <h3>Kubernetes</h3>
+                    </div>
+                    <div class="skill-projects">
+                        <span class="project-count">1 Project</span>
+                    </div>
+                </div>
+                
+                
+                
+                
+
+
+
+                <!-- Add more skill cards as needed -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="social-footer">
+        <div class="social-icons">
+            <a href="https://github.com/kb11031207" target="_blank" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/kesiena-berezi-b936ba200/" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://playstation.com/yourusername" target="_blank" class="social-icon">
+                <i class="fab fa-playstation"></i>
+            </a>
+            <a href="https://www.twitch.tv/k_b1103" target="_blank" class="social-icon">
+                <i class="fab fa-twitch"></i>
+            </a>
+            <a href="https://ea.com/yourusername" target="_blank" class="social-icon">
+                <i class="fab fa-steam"></i>
+            </a>
+            <a href="mailto:kesiena.berezi@gmail.com" class="social-icon">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+
+    <div class="projects-popup">
+        <div class="popup-content">
+            <button class="close-button">×</button>
+            <h2>Projects using <span class="skill-name"></span></h2>
+            <div class="related-projects">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this new popup structure -->
+    <div class="project-details-popup">
+        <div class="popup-content">
+            <button class="close-button">×</button>
+            <div class="project-details-content">
+                <div class="project-media">
+                    <!-- Image slider will be here if images exist -->
+                    <div class="project-slider">
+                        <div class="slider-container">
+                            <!-- Images will be dynamically inserted here -->
+                        </div>
+                        <button class="slider-btn prev">❮</button>
+                        <button class="slider-btn next">❯</button>
+                        <div class="slider-dots">
+                            <!-- Dots will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-title">Project Name</h2>
+                    <div class="project-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Status: In Progress</span>
+                    </div>
+                    <div class="project-sections">
+                        <div class="info-section">
+                            <h3>Overview</h3>
+                            <p class="project-overview"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3>My Role</h3>
+                            <p class="project-role"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Technologies Used</h3>
+                            <div class="tech-stack"></div>
+                        </div>
+                        <div class="info-section">
+                            <h3>Challenges & Solutions</h3>
+                            <p class="project-challenges"></p>
+                        </div>
+                        <div class="info-section">
+                            <h3>Current Status</h3>
+                            <div class="project-status-details">
+                                <div class="completion-status">
+                                    <span class="completion-label">Completion:</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="completion-percentage">75%</span>
+                                </div>
+                                <p class="status-description"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="source-link" target="_blank">
+                            <i class="fab fa-github"></i> View Source
+                        </a>
+                        <a href="#" class="demo-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
                     </div>
                 </div>
             </div>
@@ -210,7 +535,7 @@
 
             draw() {
                 circuitCtx.beginPath();
-
+                
                 // Dynamic color shift effect
                 let dynamicColor = `hsl(${hue}, 100%, 60%)`;
                 circuitCtx.strokeStyle = dynamicColor;
@@ -218,7 +543,7 @@
                 // Neon glow effect
                 circuitCtx.lineWidth = 1;
                 circuitCtx.shadowBlur = 10;
-                circuitCtx.shadowColor = dynamicColor;
+                circuitCtx.shadowColor = dynamicColor; 
 
                 for (let i = 0; i < this.history.length - 1; i++) {
                     circuitCtx.moveTo(this.history[i].x, this.history[i].y);
@@ -229,6 +554,7 @@
         }
 
         function initPaths() {
+            paths = []; // Clear existing paths
             for (let i = 0; i < 10; i++) {
                 paths.push(new Path(Math.random() * circuitCanvas.width, Math.random() * circuitCanvas.height));
             }
@@ -251,7 +577,7 @@
 
         initPaths();
         animateCircuits();
-        setInterval(updateTextColor, 500);
+       // setInterval(updateTextColor, 500);
         function updateTextColor() {
             const nameElement = document.querySelector(".name-reveal");
 
@@ -269,7 +595,7 @@
         }
 
         // Call the function every time the circuit updates
-        
+
         window.addEventListener("resize", resizeCanvas);
 
         function startIntroSequence() {
@@ -310,7 +636,7 @@
         window.addEventListener('load', startIntroSequence);
 
         // Add about section trigger
-        const aboutTrigger = document.querySelector('.about-trigger');
+        const aboutTrigger = document.querySelector('.about-corner-button .glow-button');
         const aboutSection = document.querySelector('.about-section');
 
         aboutTrigger.addEventListener('click', function(e) {
@@ -354,7 +680,7 @@
         });
 
         // Projects section functionality
-        const projectsTrigger = document.querySelector('.projects-trigger');
+        const projectsTrigger = document.querySelector('.button-container .glow-button');
         const projectsSection = document.querySelector('.projects-section');
         const projectsContainer = document.querySelector('.projects-container');
         const projectsCloseButton = projectsSection.querySelector('.close-button');
@@ -386,6 +712,364 @@
         // Prevent clicks inside from closing
         projectsContainer.addEventListener('click', (e) => {
             e.stopPropagation();
+        });
+
+        // Add this to your existing JavaScript
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category').split(' ');
+                    
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Add this with your other JavaScript
+        const resumeTrigger = document.querySelector('#resume-trigger');
+        const resumeSection = document.querySelector('.resume-section');
+        const resumeContainer = document.querySelector('.resume-container');
+        const resumeCloseButton = resumeSection.querySelector('.close-button');
+
+        // Open resume section
+        resumeTrigger.addEventListener('click', function() {
+            resumeSection.classList.add('visible');
+            resumeSection.style.opacity = '1';
+            resumeSection.style.pointerEvents = 'auto';
+        });
+
+        // Close button for resume
+        resumeCloseButton.addEventListener('click', () => {
+            resumeSection.classList.remove('visible');
+            resumeSection.style.opacity = '0';
+            resumeSection.style.pointerEvents = 'none';
+        });
+
+        // Click outside to close
+        resumeSection.addEventListener('click', (e) => {
+            if (e.target === resumeSection) {
+                resumeSection.classList.remove('visible');
+                resumeSection.style.opacity = '0';
+                resumeSection.style.pointerEvents = 'none';
+            }
+        });
+
+        // Prevent clicks inside from closing
+        resumeContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Add this with your other JavaScript
+        const skillsTrigger = document.querySelector('.skills-corner-button .glow-button');
+        const skillsSection = document.querySelector('.skills-section');
+        const skillsContainer = document.querySelector('.skills-container');
+        const skillsCloseButton = skillsSection.querySelector('.close-button');
+
+        // Open skills section
+        skillsTrigger.addEventListener('click', function() {
+            skillsSection.classList.add('visible');
+            skillsSection.style.opacity = '1';
+            skillsSection.style.pointerEvents = 'auto';
+        });
+
+        // Close button for skills
+        skillsCloseButton.addEventListener('click', () => {
+            skillsSection.classList.remove('visible');
+            skillsSection.style.opacity = '0';
+            skillsSection.style.pointerEvents = 'none';
+        });
+
+        // Click outside to close
+        skillsSection.addEventListener('click', (e) => {
+            if (e.target === skillsSection) {
+                skillsSection.classList.remove('visible');
+                skillsSection.style.opacity = '0';
+                skillsSection.style.pointerEvents = 'none';
+            }
+        });
+
+        // Prevent clicks inside from closing
+        skillsContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Skills filtering
+        const skillFilterButtons = document.querySelectorAll('.skill-filter-btn');
+        const skillCards = document.querySelectorAll('.skill-card');
+
+        skillCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const skill = card.getAttribute('data-skill');
+                const skillName = card.querySelector('h3').textContent;
+                const popup = document.querySelector('.projects-popup');
+                const skillNameSpan = popup.querySelector('.skill-name');
+                const relatedProjects = popup.querySelector('.related-projects');
+                
+                // Clear previous projects
+                relatedProjects.innerHTML = '';
+                
+                // Find related projects
+                projectCards.forEach(project => {
+                    const projectSkills = project.getAttribute('data-skills').split(',');
+                    if (projectSkills.includes(skill)) {
+                        const projectTitle = project.querySelector('h3').textContent;
+                        const projectDesc = project.querySelector('.project-description').textContent;
+                        
+                        // Create project card in popup
+                        const projectCard = document.createElement('div');
+                        projectCard.className = 'related-project-card';
+                        projectCard.innerHTML = `
+                            <h3>${projectTitle}</h3>
+                            <p>${projectDesc}</p>
+                        `;
+                        relatedProjects.appendChild(projectCard);
+                    }
+                });
+                
+                // Show popup
+                skillNameSpan.textContent = skillName;
+                popup.classList.add('visible');
+            });
+        });
+
+        // Add close functionality for popup
+        const popup = document.querySelector('.projects-popup');
+        const popupCloseBtn = popup.querySelector('.close-button');
+
+        popupCloseBtn.addEventListener('click', () => {
+            popup.classList.remove('visible');
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.remove('visible');
+            }
+        });
+
+        // Add this to your JavaScript section
+        const projectDetailPopup = document.querySelector('.project-details-popup');
+        const projectDetailCloseBtn = projectDetailPopup.querySelector('.close-button');
+
+        // Project data object to store detailed information
+        const projectData = {
+            'Telemetry Application': {
+                title: 'Telemetry Application',
+                status: 'in-progress',
+                completion: 50,
+                overview: 'A real-time telemetry monitoring system for the solar car team that collects, processes, and visualizes data from various sensors.',
+                role: 'Lead Developer responsible for project management, system architecture, backend development, and real-time data processing pipeline.',
+                challenges: 'Handling real-time data streams from multiple sensors, implementing efficient data storage, and creating responsive visualizations. Solved using WebSocket connections and optimized database schemas.',
+                statusDescription: 'Currently waiting on the firmware and hardware for the board resposnsible for transmitting the data to the database to be completed ',
+                techStack: ['Flutter', 'JavaScript', 'Snowflake'],
+                images: [
+                    'images/telem1.jpg',
+                    'images/telem2.jpg',
+                    'images/telem3.jpg',
+                ],
+               
+            },
+            'Credit Score Prediction Model': {
+                title: 'Credit Score Prediction Model',
+                status: 'completed',
+                completion: 100,
+                overview: 'A machine learning model that predicts credit scores using financial and demographic data, helping financial institutions assess credit risk.',
+                role: 'Data Scientist & ML Engineer responsible for model development, training, and validation.',
+                challenges: 'Handling imbalanced data, feature engineering for complex financial metrics, and ensuring model fairness across demographic groups.',
+                statusDescription: 'Successfully deployed and being used in production with 85% accuracy.',
+                techStack: ['Python', 'Scikit-learn', 'Pandas', 'SQL', 'Machine Learning'],
+                images: [
+                    'images/cc.jpg',
+                    'images/cc2.jpg'
+                   
+                ],
+                sourceLink: 'https://github.com/kb11031207/Credit-Score-Anaylsis-Project.git',
+                
+            },
+            'Bee Hive Agent': {
+                title: 'Bee Hive Agent',
+                status: 'completed',
+                completion: 100,
+                overview: 'An AI agent trained using reinforcement learning to play the Bee Hive (Reversi) game at a competitive level.',
+                role: 'ML Engineer responsible for implementing the RL algorithm and training pipeline.',
+                challenges: 'Designing an effective reward system, optimizing the training process for complex game states, and implementing efficient state representation.',
+                statusDescription: 'Agent successfully trained and achieves a 70% win rate against advanced players.',
+                techStack: ['Python', 'PyTorch', 'Reinforcement Learning', 'Neural Networks'],
+                images: [
+                    'images/cc.jpg',
+                    'images/cc2.jpg'
+                ],
+                sourceLink: 'https://github.com/kb11031207/RL_BEEHIVE.git',
+               
+            }
+        };
+
+        // Add this after your projectData declaration
+        function preloadImages() {
+            // Collect all image URLs from project data
+            const imageUrls = Object.values(projectData)
+                .reduce((urls, project) => {
+                    if (project.images && project.images.length) {
+                        urls.push(...project.images);
+                    }
+                    return urls;
+                }, []);
+
+            // Create a hidden container for preloaded images
+            const preloadContainer = document.createElement('div');
+            preloadContainer.style.display = 'none';
+            document.body.appendChild(preloadContainer);
+
+            // Preload each image
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+                preloadContainer.appendChild(img);
+            });
+        }
+
+        // Call preloadImages when the page loads
+        window.addEventListener('load', preloadImages);
+
+        // Update the project card click handler where we handle links
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectTitle = card.querySelector('h3').textContent;
+                const project = projectData[projectTitle];
+                
+                if (project) {
+                    // Update popup content
+                    const popup = projectDetailPopup;
+                    popup.querySelector('.project-title').textContent = project.title;
+                    popup.querySelector('.project-overview').textContent = project.overview;
+                    popup.querySelector('.project-role').textContent = project.role;
+                    popup.querySelector('.project-challenges').textContent = project.challenges;
+                    popup.querySelector('.completion-percentage').textContent = `${project.completion}%`;
+                    popup.querySelector('.progress-fill').style.width = `${project.completion}%`;
+                    popup.querySelector('.status-description').textContent = project.statusDescription;
+
+                    // Update tech stack
+                    const techStackContainer = popup.querySelector('.tech-stack');
+                    techStackContainer.innerHTML = project.techStack
+                        .map(tech => `<span class="tech-tag">${tech}</span>`)
+                        .join('');
+
+                    // Handle image slider if images exist
+                    const sliderContainer = popup.querySelector('.slider-container');
+                    const sliderDots = popup.querySelector('.slider-dots');
+                    
+                    if (project.images && project.images.length > 0) {
+                        // Use preloaded images
+                        sliderContainer.innerHTML = project.images
+                            .map(img => {
+                                const preloadedImg = document.querySelector(`img[src="${img}"]`);
+                                return preloadedImg ? preloadedImg.outerHTML : `<img src="${img}" alt="Project screenshot">`;
+                            })
+                            .join('');
+                        
+                        sliderDots.innerHTML = project.images
+                            .map((_, i) => `<div class="dot${i === 0 ? ' active' : ''}"></div>`)
+                            .join('');
+                        
+                        popup.querySelector('.project-slider').style.display = 'block';
+                        setupSlider();
+                        showSlide(0);
+                    } else {
+                        popup.querySelector('.project-slider').style.display = 'none';
+                    }
+
+                    // Update links section
+                    const projectLinks = popup.querySelector('.project-links');
+                    projectLinks.innerHTML = ''; // Clear existing links
+
+                    // Only add source link if it exists
+                    if (project.sourceLink) {
+                        projectLinks.innerHTML += `
+                            <a href="${project.sourceLink}" class="source-link" target="_blank">
+                                <i class="fab fa-github"></i> View Source
+                            </a>
+                        `;
+                    }
+
+                    // Only add demo link if it exists
+                    if (project.demoLink) {
+                        projectLinks.innerHTML += `
+                            <a href="${project.demoLink}" class="demo-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        `;
+                    }
+
+                    // Hide the entire links section if no links are available
+                    projectLinks.style.display = project.sourceLink || project.demoLink ? 'flex' : 'none';
+
+                    // Show popup
+                    popup.classList.add('visible');
+                }
+            });
+        });
+
+        // Image slider functionality
+        let currentSlide = 0;
+        const prevBtn = projectDetailPopup.querySelector('.slider-btn.prev');
+        const nextBtn = projectDetailPopup.querySelector('.slider-btn.next');
+
+        function showSlide(n) {
+            const slides = projectDetailPopup.querySelectorAll('.slider-container img');
+            const dots = projectDetailPopup.querySelectorAll('.dot');
+            
+            if (slides.length === 0) return;
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            const offset = -currentSlide * 100;
+            projectDetailPopup.querySelector('.slider-container').style.transform = `translateX(${offset}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        prevBtn?.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextBtn?.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        // Close popup handlers
+        projectDetailCloseBtn.addEventListener('click', () => {
+            projectDetailPopup.classList.remove('visible');
+        });
+
+        projectDetailPopup.addEventListener('click', (e) => {
+            if (e.target === projectDetailPopup) {
+                projectDetailPopup.classList.remove('visible');
+            }
+        });
+
+        // Add dot click functionality
+        function setupSlider() {
+            const dots = projectDetailPopup.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (projectDetailPopup.classList.contains('visible')) {
+                if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+                if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+            }
         });
     </script>
 </body>
