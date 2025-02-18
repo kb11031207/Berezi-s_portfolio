@@ -57,20 +57,13 @@
                     <p class="typing">> Initializing profile data...</p>
                     <p class="typing-delay-2">> I am a tech enthusiast with a dream to change the world</p>
                     <p class="typing-delay-3">> Big Time Arsenal FC Fan </p>
-                    <p class="typing-delay-4">> Incase you havent noticed my favorite color is green</p>
-                    <p class="typing-delay-5">> I also like to play video games and watch anime</p>
-
-    
                     <p class="typing-delay-1">> Loading skills and interests...</p>
                     
                     <p class="typing-delay-3">> Core competencies include:</p>
                     <ul class="skills-list typing-delay-4">
                         <li>AI/Machine Learning</li>
-                        <li>FIFA</li>
                         <li>Software Development</li>
-                        <li>Arsenal FC</li>
                         <li>Cloud Engineering</li>
-                        
                         <li>Data Science</li>
                     </ul>
                     <p class="typing-delay-5">> Currently exploring the intersections of technology and creativity</p>
@@ -944,7 +937,7 @@
         // Call preloadImages when the page loads
         window.addEventListener('load', preloadImages);
 
-        // Update the project card click handler where we handle links
+        // Update the project card click handler to use preloaded images
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
                 const projectTitle = card.querySelector('h3').textContent;
@@ -991,30 +984,11 @@
                         popup.querySelector('.project-slider').style.display = 'none';
                     }
 
-                    // Update links section
-                    const projectLinks = popup.querySelector('.project-links');
-                    projectLinks.innerHTML = ''; // Clear existing links
-
-                    // Only add source link if it exists
-                    if (project.sourceLink) {
-                        projectLinks.innerHTML += `
-                            <a href="${project.sourceLink}" class="source-link" target="_blank">
-                                <i class="fab fa-github"></i> View Source
-                            </a>
-                        `;
-                    }
-
-                    // Only add demo link if it exists
-                    if (project.demoLink) {
-                        projectLinks.innerHTML += `
-                            <a href="${project.demoLink}" class="demo-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        `;
-                    }
-
-                    // Hide the entire links section if no links are available
-                    projectLinks.style.display = project.sourceLink || project.demoLink ? 'flex' : 'none';
+                    // Update links
+                    const sourceLink = popup.querySelector('.source-link');
+                    const demoLink = popup.querySelector('.demo-link');
+                    sourceLink.href = project.sourceLink;
+                    demoLink.href = project.demoLink;
 
                     // Show popup
                     popup.classList.add('visible');
