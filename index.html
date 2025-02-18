@@ -1,3 +1,11 @@
+/************************************************
+*  Portfolio Website 
+* Kesiena Berezi
+* CSCI 324 - CSS Lab
+* Due Feb 18, 2025
+* Main HTML file for the portfolio website
+************************************************/
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,23 +59,35 @@
             <button class="close-button">×</button>
             <div class="about-header">
                 <h2>./about_me.exe</h2>
+                <div class="status-indicator">
+                    <span class="status-dot pulsing"></span>
+                    <span class="status-text">ONLINE - Available for exciting projects and collaborations</span>
+                </div>
             </div>
             <div class="about-content">
                 <div class="terminal-text">
                     <p class="typing">> Initializing profile data...</p>
                     <p class="typing-delay-2">> I am a tech enthusiast with a dream to change the world</p>
                     <p class="typing-delay-3">> Big Time Arsenal FC Fan </p>
-                    <p class="typing-delay-1">> Loading skills and interests...</p>
+                    <p class="typing-delay-4">> Check out my cool projects</p>
+                    <p class="typing-delay-4">> Incase you havent noticed my favorite color is green</p>
+                    <p class="typing-delay-5">> I also like to play video games and watch anime</p>
+
                     
                     <p class="typing-delay-3">> Core competencies include:</p>
                     <ul class="skills-list typing-delay-4">
                         <li>AI/Machine Learning</li>
+                        <li>FIFA</li>
                         <li>Software Development</li>
+                        <li>Arsenal FC</li>
                         <li>Cloud Engineering</li>
                         <li>Data Science</li>
                     </ul>
                     <p class="typing-delay-5">> Currently exploring the intersections of technology and creativity</p>
-                    <p class="typing-delay-6">> Status: Available for exciting projects and collaborations</p>
+                    
+                    <p class="cta-text typing-delay-6">
+                        > Now <span class="project-link">Please check out my cool projects</span>... <span class="cursor">█</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -804,38 +824,27 @@
         const skillFilterButtons = document.querySelectorAll('.skill-filter-btn');
         const skillCards = document.querySelectorAll('.skill-card');
 
-        skillCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const skill = card.getAttribute('data-skill');
-                const skillName = card.querySelector('h3').textContent;
-                const popup = document.querySelector('.projects-popup');
-                const skillNameSpan = popup.querySelector('.skill-name');
-                const relatedProjects = popup.querySelector('.related-projects');
+        skillFilterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                skillFilterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
                 
-                // Clear previous projects
-                relatedProjects.innerHTML = '';
+                const filter = button.getAttribute('data-filter');
                 
-                // Find related projects
-                projectCards.forEach(project => {
-                    const projectSkills = project.getAttribute('data-skills').split(',');
-                    if (projectSkills.includes(skill)) {
-                        const projectTitle = project.querySelector('h3').textContent;
-                        const projectDesc = project.querySelector('.project-description').textContent;
-                        
-                        // Create project card in popup
-                        const projectCard = document.createElement('div');
-                        projectCard.className = 'related-project-card';
-                        projectCard.innerHTML = `
-                            <h3>${projectTitle}</h3>
-                            <p>${projectDesc}</p>
-                        `;
-                        relatedProjects.appendChild(projectCard);
+                // Show/hide cards based on filter
+                skillCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'flex';
+                    } else {
+                        if (card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
                     }
                 });
-                
-                // Show popup
-                skillNameSpan.textContent = skillName;
-                popup.classList.add('visible');
             });
         });
 
@@ -937,7 +946,7 @@
         // Call preloadImages when the page loads
         window.addEventListener('load', preloadImages);
 
-        // Update the project card click handler to use preloaded images
+        // Update the project card click handler where we handle links
         projectCards.forEach(card => {
             card.addEventListener('click', () => {
                 const projectTitle = card.querySelector('h3').textContent;
@@ -984,11 +993,30 @@
                         popup.querySelector('.project-slider').style.display = 'none';
                     }
 
-                    // Update links
-                    const sourceLink = popup.querySelector('.source-link');
-                    const demoLink = popup.querySelector('.demo-link');
-                    sourceLink.href = project.sourceLink;
-                    demoLink.href = project.demoLink;
+                    // Update links section
+                    const projectLinks = popup.querySelector('.project-links');
+                    projectLinks.innerHTML = ''; // Clear existing links
+
+                    // Only add source link if it exists
+                    if (project.sourceLink) {
+                        projectLinks.innerHTML += `
+                            <a href="${project.sourceLink}" class="source-link" target="_blank">
+                                <i class="fab fa-github"></i> View Source
+                            </a>
+                        `;
+                    }
+
+                    // Only add demo link if it exists
+                    if (project.demoLink) {
+                        projectLinks.innerHTML += `
+                            <a href="${project.demoLink}" class="demo-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        `;
+                    }
+
+                    // Hide the entire links section if no links are available
+                    projectLinks.style.display = project.sourceLink || project.demoLink ? 'flex' : 'none';
 
                     // Show popup
                     popup.classList.add('visible');
@@ -1044,6 +1072,127 @@
                 if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
                 if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
             }
+        });
+
+        // Add click handler for project link
+        document.querySelector('.project-link').addEventListener('click', () => {
+            // Close about section
+            document.querySelector('.about-section').classList.remove('visible');
+            document.querySelector('.about-section').style.opacity = '0';
+            document.querySelector('.about-section').style.pointerEvents = 'none';
+            
+            // Open projects section
+            document.querySelector('.projects-section').classList.add('visible');
+            document.querySelector('.projects-section').style.opacity = '1';
+            document.querySelector('.projects-section').style.pointerEvents = 'auto';
+        });
+
+        // Add this function after your projectData declaration
+        function updateSkillProjectCounts() {
+            // Get all skill cards
+            const skillCards = document.querySelectorAll('.skill-card');
+            
+            skillCards.forEach(card => {
+                const skill = card.getAttribute('data-skill');
+                const projectCount = Object.values(projectData)
+                    .filter(project => {
+                        // Check if the skill is in the project's techStack
+                        return project.techStack
+                            .map(tech => tech.toLowerCase())
+                            .includes(skill.toLowerCase());
+                    })
+                    .length;
+                
+                // Update the project count display
+                const countDisplay = card.querySelector('.project-count');
+                countDisplay.textContent = `${projectCount} Project${projectCount !== 1 ? 's' : ''}`;
+                
+                // Optionally hide skills with no projects
+                // card.style.display = projectCount > 0 ? 'flex' : 'none';
+            });
+        }
+
+        // Call this function after loading project data
+        window.addEventListener('load', () => {
+            preloadImages();
+            updateSkillProjectCounts();
+        });
+
+        // Update the skill card click handler to show related projects
+        skillCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const skill = card.getAttribute('data-skill');
+                const skillName = card.querySelector('h3').textContent;
+                
+                // Find all projects that use this skill
+                const relatedProjects = Object.values(projectData)
+                    .filter(project => 
+                        project.techStack
+                            .map(tech => tech.toLowerCase())
+                            .includes(skill.toLowerCase())
+                    );
+                    
+                // Update the projects section to show only related projects
+                const projectsGrid = document.querySelector('.projects-grid');
+                projectsGrid.innerHTML = ''; // Clear existing projects
+                
+                relatedProjects.forEach(project => {
+                    // Create project card HTML
+                    const projectCard = `
+                        <div class="project-card" data-category="${project.status}" data-skills="${project.techStack.join(',')}">
+                            <div class="project-header">
+                                <span class="status-dot"></span>
+                                <h3>${project.title}</h3>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">${project.overview}</p>
+                                <div class="progress-container">
+                                    <div class="progress-label">Completion</div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: ${project.completion}%"></div>
+                                        <div class="progress-glow"></div>
+                                    </div>
+                                    <div class="progress-percentage">${project.completion}%</div>
+                                </div>
+                                <div class="tech-stack">
+                                    ${project.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div class="project-footer">
+                                ${project.sourceLink ? `<a href="${project.sourceLink}" class="project-link">View Source <span class="arrow">→</span></a>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    projectsGrid.innerHTML += projectCard;
+                });
+
+                // Show the projects section
+                const projectsSection = document.querySelector('.projects-section');
+                projectsSection.classList.add('visible');
+                projectsSection.style.opacity = '1';
+                projectsSection.style.pointerEvents = 'auto';
+                
+                // Close the skills section
+                const skillsSection = document.querySelector('.skills-section');
+                skillsSection.classList.remove('visible');
+                skillsSection.style.opacity = '0';
+                skillsSection.style.pointerEvents = 'none';
+            });
+        });
+
+        // Replace the animation timing JavaScript with this simpler version
+        document.addEventListener('DOMContentLoaded', () => {
+            const lineAnimation = document.querySelector('.line-animation');
+            const nameReveal = document.querySelector('.name-reveal');
+            
+            requestAnimationFrame(() => {
+                lineAnimation.classList.add('animate');
+                
+                setTimeout(() => {
+                    nameReveal.classList.add('visible');
+                    lineAnimation.style.opacity = '0';
+                }, 800);
+            });
         });
     </script>
 </body>
