@@ -1,0 +1,91 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro {
+    position: fixed; /* Changed to fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    z-index: 1000; /* Higher z-index */
+    animation: glitch 1.5s infinite alternate;
+}
+
+h1 {
+    font-size: 4.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #e60073,
+        0 0 40px #e60073;
+}
+
+h2 {
+    font-size: 2.5rem;
+    opacity: 1;
+    margin-top: 10px;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #0ff;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8); }
+    50% { text-shadow: 0px 0px 15px rgba(255, 0, 255, 1); }
+    100% { text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8); }
+}
+
+@keyframes flicker {
+   0% { opacity: 1; }
+   50% { opacity: 0.8; text-shadow: 0px 0px 20px red; }
+   100% { opacity: 1; text-shadow: 0px 0px 10px red; }
+}
+
+.profile img {
+    position: fixed;
+    bottom: 50px; /* Position from bottom instead */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    border-radius: 50%;
+    filter: grayscale(100%) contrast(1.2);
+    animation: glitch 0.8s infinite alternate;
+    z-index: 1001;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8); }
+    50% { text-shadow: 0px 0px 15px rgba(255, 0, 255, 1); }
+    100% { text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8); }
+}

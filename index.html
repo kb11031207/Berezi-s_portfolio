@@ -1,29 +1,28 @@
-/************************************************
-* Portfolio Canvas with Animation
-* Kesiena Berezi
-* CSCI 324 - CSS Lab
-* Feb 13, 2025
-* Main index file for styling the portfolio canvas
-************************************************/
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Circuit Matrix</title>
-    <style>
-        body { margin: 0; overflow: hidden; background: black; }
-        canvas { display: block; position: absolute; top: 0; left: 0; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="matrixCanvas"></canvas>
-    <canvas id="circuitCanvas"></canvas>
+    <div class="container">
+        <canvas id="matrixCanvas"></canvas>
+        <canvas id="circuitCanvas"></canvas>
+        <div class="intro">
+            <h1> Kesiena Berezi</h1>
+            
+        </div>
+        <div class="profile">
+            <img src="images/headshot.jpg" alt="Kesiena Berezi">
+        </div>
+    </div>
+   
+    
 
     <script>
-        // MATRIX CODE RAIN EFFECT
+        // MATRIX CODE RAIN EFFECT WITH FLICKER
         const matrixCanvas = document.getElementById("matrixCanvas");
         const matrixCtx = matrixCanvas.getContext("2d");
 
@@ -44,7 +43,7 @@
         const chars = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ @#$%^&*()_+-=[]{}|;:<>?,./";
         const charArray = chars.split("");
 
-        // Define the message you want to display
+        // Define message for the rain
         const message = "WELCOME TO MY PAGE";
         const messageArray = message.split("");
         let messageIndex = 0;
@@ -53,11 +52,15 @@
             matrixCtx.fillStyle = "rgba(0, 0, 0, 0.05)";
             matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
-            matrixCtx.fillStyle = "#ff0000"; // Blood red text
+            // Slight flickering effect on text
+            let flickerIntensity = Math.random() * 0.5 + 0.5; // Random opacity for flicker effect
+            matrixCtx.fillStyle = `rgba(255, 0, 0, ${flickerIntensity})`; // Blood red text with flicker
+            //make white
+            matrixCtx.fillStyle = "white";
+
             matrixCtx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
-                // Use characters from the message instead of random ones
                 const text = messageArray[messageIndex];
                 const x = i * fontSize;
                 const y = drops[i] * fontSize;
@@ -69,20 +72,20 @@
                 }
                 drops[i]++;
 
-                // Cycle through the message
                 messageIndex = (messageIndex + 1) % messageArray.length;
             }
         }
 
         setInterval(drawMatrix, 50);
 
-        // CIRCUIT BOARD CONNECTIONS
+        // CIRCUIT BOARD CONNECTIONS WITH GLOW & COLOR SHIFT
         const circuitCanvas = document.getElementById("circuitCanvas");
         const circuitCtx = circuitCanvas.getContext("2d");
         circuitCanvas.width = window.innerWidth;
         circuitCanvas.height = window.innerHeight;
 
         let paths = [];
+        let hue = 0; // For shifting colors dynamically
 
         class Path {
             constructor(x, y) {
@@ -109,11 +112,16 @@
 
             draw() {
                 circuitCtx.beginPath();
-                //circuitCtx.strokeStyle = "#00ffee"; //
-                circuitCtx.strokeStyle = "black"; //
+                
+                // Dynamic color shift effect
+                let dynamicColor = `hsl(${hue}, 100%, 60%)`;
+                circuitCtx.strokeStyle = dynamicColor;
+
+                // Neon glow effect
                 circuitCtx.lineWidth = 1;
-                circuitCtx.shadowBlur = 5;
-                circuitCtx.shadowColor = "white";
+                circuitCtx.shadowBlur = 10;
+                circuitCtx.shadowColor = dynamicColor; 
+
                 for (let i = 0; i < this.history.length - 1; i++) {
                     circuitCtx.moveTo(this.history[i].x, this.history[i].y);
                     circuitCtx.lineTo(this.history[i + 1].x, this.history[i + 1].y);
@@ -123,17 +131,23 @@
         }
 
         function initPaths() {
-            for (let i = 0; i < 10; i++) { // Fewer paths to avoid clutter
+            for (let i = 0; i < 10; i++) {
                 paths.push(new Path(Math.random() * circuitCanvas.width, Math.random() * circuitCanvas.height));
             }
         }
 
         function animateCircuits() {
             circuitCtx.clearRect(0, 0, circuitCanvas.width, circuitCanvas.height);
+
+            // Slowly shift colors from red to blue
+            hue += 0.5;
+            if (hue > 360) hue = 0;
+
             for (let path of paths) {
                 path.update();
                 path.draw();
             }
+
             requestAnimationFrame(animateCircuits);
         }
 
