@@ -1,25 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Circuit Matrix</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <canvas id="matrixCanvas"></canvas>
         <canvas id="circuitCanvas"></canvas>
-        <div class="intro">
-            <h1> Kesiena Berezi</h1>
-            
-        </div>
-        <div class="profile">
-            <img src="images/headshot.jpg" alt="Kesiena Berezi">
+        <div class="intro-sequence">
+            <div class="line-animation"></div>
+            <div class="name-reveal">
+                <div class="profile-image">
+                    <img src="images/headshot.jpg" alt="Kesiena Berezi">
+                </div>
+                <h1>Kesiena Berezi</h1>
+                <h2>Tech Enthusiast</h2>
+                <div class="button-container">
+                    <button class="about-trigger">About Me</button>
+                    <button class="projects-trigger">Projects</button>
+                </div>
+            </div>
         </div>
     </div>
-   
-    
+
+    <div class="about-section">
+        <div class="about-container">
+            <button class="close-button">×</button>
+            <div class="about-header">
+                <h2>./about_me.exe</h2>
+            </div>
+            <div class="about-content">
+                <div class="terminal-text">
+                    <p class="typing">> Initializing profile data...</p>
+                    <p class="typing-delay-2">> I am a tech enthusiast with a dream to change the world</p>
+                    <p class="typing-delay-3">> Big Time Arsenal FC Fan </p>
+                    <p class="typing-delay-1">> Loading skills and interests...</p>
+                    
+                    <p class="typing-delay-3">> Core competencies include:</p>
+                    <ul class="skills-list typing-delay-4">
+                        <li>AI/Machine Learning</li>
+                        <li>Software Development</li>
+                        <li>Cloud Engineering</li>
+                        <li>Data Science</li>
+                    </ul>
+                    <p class="typing-delay-5">> Currently exploring the intersections of technology and creativity</p>
+                    <p class="typing-delay-6">> Status: Available for exciting projects and collaborations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="projects-section">
+        <div class="projects-container">
+            <button class="close-button">×</button>
+            <div class="section-header">
+                <h2>./projects.sys</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="status-dot"></span>
+                        <h3>Telemetry Application</h3>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Developing an application for the solar car team to monitor and visualize telemetry data in real-time.</p>
+                        <div class="progress-container">
+                            <div class="progress-label">Completion</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                                <div class="progress-glow"></div>
+                            </div>
+                            <div class="progress-percentage">50%</div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Javascript</span>
+                            <span class="tech-tag">Snowflake</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="project-link">View Source <span class="arrow">→</span></a>
+                    </div>
+                </div>
+
+                <!-- More project cards with the same structure -->
+                <div class="project-card">
+                    <!-- Similar structure for other projects -->
+                    <div class="project-header">
+                        <span class="status-dot"></span>
+                        <h3>Credit Score Prediction Model</h3>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Built a machine learning model to predict credit scores based on financial and demographic data.</p>
+                        <div class="progress-container">
+                            <div class="progress-label">Completion</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                                <div class="progress-glow"></div>
+                            </div>
+                            <div class="progress-percentage">100%</div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI-Assited Development</span>
+                            <span class="tech-tag">Data Science</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">View Source <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // MATRIX CODE RAIN EFFECT WITH FLICKER
@@ -112,7 +210,7 @@
 
             draw() {
                 circuitCtx.beginPath();
-                
+
                 // Dynamic color shift effect
                 let dynamicColor = `hsl(${hue}, 100%, 60%)`;
                 circuitCtx.strokeStyle = dynamicColor;
@@ -120,7 +218,7 @@
                 // Neon glow effect
                 circuitCtx.lineWidth = 1;
                 circuitCtx.shadowBlur = 10;
-                circuitCtx.shadowColor = dynamicColor; 
+                circuitCtx.shadowColor = dynamicColor;
 
                 for (let i = 0; i < this.history.length - 1; i++) {
                     circuitCtx.moveTo(this.history[i].x, this.history[i].y);
@@ -153,8 +251,143 @@
 
         initPaths();
         animateCircuits();
+        setInterval(updateTextColor, 500);
+        function updateTextColor() {
+            const nameElement = document.querySelector(".name-reveal");
 
+            // Get the current hue of the circuit
+            let currentHue = hue % 360;
+
+            // Choose a contrasting color
+            if (currentHue > 180) {
+                nameElement.style.color = "#FF0015FF"; // Teal for cool hues
+                nameElement.style.textShadow = "0px 0px 15px #00ffcc";
+            } else {
+                nameElement.style.color = "#ff007f"; // Magenta for warm hues
+                nameElement.style.textShadow = "0px 0px 15px #ff007f";
+            }
+        }
+
+        // Call the function every time the circuit updates
+        
         window.addEventListener("resize", resizeCanvas);
+
+        function startIntroSequence() {
+            const introSequence = document.querySelector('.intro-sequence');
+            const lineAnimation = document.querySelector('.line-animation');
+            const nameReveal = document.querySelector('.name-reveal');
+            const profileImage = document.querySelector('.profile-image img');
+
+            // Preload the image
+            function preloadImage(callback) {
+                if (profileImage.complete) {
+                    callback();
+                } else {
+                    profileImage.onload = callback;
+                }
+            }
+
+            // Start sequence only after image is loaded
+            preloadImage(() => {
+                setTimeout(() => {
+                    lineAnimation.classList.add('animate');
+                    
+                    setTimeout(() => {
+                        lineAnimation.classList.add('expand');
+                        nameReveal.classList.add('visible');
+                        setTimeout(() => {
+                            lineAnimation.classList.add('fade-out');
+                        }, 500);
+                    }, 2000);
+                    
+                }, 3000);
+            });
+
+            setInterval(updateTextColor, 500);
+        }
+
+        // Start the sequence when everything is loaded
+        window.addEventListener('load', startIntroSequence);
+
+        // Add about section trigger
+        const aboutTrigger = document.querySelector('.about-trigger');
+        const aboutSection = document.querySelector('.about-section');
+
+        aboutTrigger.addEventListener('click', function(e) {
+            console.log('About button clicked'); // Debug log
+            aboutSection.style.opacity = '1';
+            aboutSection.style.pointerEvents = 'auto';
+            aboutSection.classList.add('visible');
+            
+            // Reset and restart animations
+            const elements = document.querySelectorAll('.terminal-text p, .terminal-text ul');
+            elements.forEach(element => {
+                element.style.animation = 'none';
+                element.offsetHeight; // Trigger reflow
+                element.style.animation = null;
+            });
+        });
+
+        // Add close functionality
+        const closeButton = document.querySelector('.close-button');
+        const aboutContainer = document.querySelector('.about-container');
+
+        // Close button click handler
+        closeButton.addEventListener('click', () => {
+            aboutSection.classList.remove('visible');
+            aboutSection.style.opacity = '0';
+            aboutSection.style.pointerEvents = 'none';
+        });
+
+        // Click outside to close
+        aboutSection.addEventListener('click', (e) => {
+            if (e.target === aboutSection) {
+                aboutSection.classList.remove('visible');
+                aboutSection.style.opacity = '0';
+                aboutSection.style.pointerEvents = 'none';
+            }
+        });
+
+        // Prevent clicks inside the container from closing
+        aboutContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Projects section functionality
+        const projectsTrigger = document.querySelector('.projects-trigger');
+        const projectsSection = document.querySelector('.projects-section');
+        const projectsContainer = document.querySelector('.projects-container');
+        const projectsCloseButton = projectsSection.querySelector('.close-button');
+
+        // Open projects section
+        projectsTrigger.addEventListener('click', function() {
+            console.log('Projects button clicked');
+            projectsSection.classList.add('visible');
+            projectsSection.style.opacity = '1';
+            projectsSection.style.pointerEvents = 'auto';
+        });
+
+        // Close button for projects
+        projectsCloseButton.addEventListener('click', () => {
+            projectsSection.classList.remove('visible');
+            projectsSection.style.opacity = '0';
+            projectsSection.style.pointerEvents = 'none';
+        });
+
+        // Click outside to close
+        projectsSection.addEventListener('click', (e) => {
+            if (e.target === projectsSection) {
+                projectsSection.classList.remove('visible');
+                projectsSection.style.opacity = '0';
+                projectsSection.style.pointerEvents = 'none';
+            }
+        });
+
+        // Prevent clicks inside from closing
+        projectsContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     </script>
 </body>
+
 </html>
