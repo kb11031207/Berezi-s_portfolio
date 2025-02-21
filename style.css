@@ -29,6 +29,7 @@ canvas {
     width: 100%;
     height: 100%;
     z-index: -1;
+    will-change: transform; /* Optimize canvas animations */
 }
 
 .intro {
@@ -75,12 +76,14 @@ h2 {
    0% { text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8); }
    50% { text-shadow: 0px 0px 15px rgba(255, 0, 255, 1); }
    100% { text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8); }
+   will-change: text-shadow; /* Optimize glitch animation */
 }
 
 @keyframes flicker {
    0% { opacity: 1; }
    50% { opacity: 0.8; text-shadow: 0px 0px 20px red; }
    100% { opacity: 1; text-shadow: 0px 0px 10px red; }
+   will-change: opacity, text-shadow; /* Optimize flicker animation */
 }
 
 .profile img {
@@ -93,6 +96,7 @@ h2 {
    filter: grayscale(100%) contrast(1.2);
    animation: glitch 0.8s infinite alternate;
     z-index: 1001;
+    will-change: transform; /* Optimize profile image animation */
 }
 
 @keyframes glitch {
