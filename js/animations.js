@@ -63,7 +63,8 @@ class MatrixRain {
     }
     
     startAnimation() {
-        setInterval(() => this.draw(), 50);
+        // Reduce frequency for better performance - 15 FPS instead of 20 FPS
+        setInterval(() => this.draw(), 66);
     }
 }
 
@@ -77,6 +78,13 @@ class CircuitBoard {
         this.ctx = this.canvas.getContext("2d");
         this.paths = [];
         this.hue = 0;
+        this.isIntroPhase = true;
+        
+        // Increase complexity after intro
+        setTimeout(() => {
+            this.isIntroPhase = false;
+            this.initPaths();
+        }, 6000);
         
         this.init();
     }
@@ -96,7 +104,9 @@ class CircuitBoard {
     
     initPaths() {
         this.paths = [];
-        for (let i = 0; i < 10; i++) {
+        // Start with fewer paths for better performance, increase later
+        const pathCount = this.isIntroPhase ? 5 : 10;
+        for (let i = 0; i < pathCount; i++) {
             this.paths.push(new Path(
                 Math.random() * this.canvas.width, 
                 Math.random() * this.canvas.height
@@ -175,11 +185,13 @@ class TextColorUpdater {
     constructor(circuitBoard) {
         this.circuitBoard = circuitBoard;
         this.nameElement = document.querySelector(".name-reveal");
-        this.startUpdating();
+        this.isRunning = false;
+        // Don't start immediately - wait for intro to finish
+        setTimeout(() => this.startUpdating(), 5000);
     }
     
     updateTextColor() {
-        if (!this.nameElement) return;
+        if (!this.nameElement || !this.isRunning) return;
         
         // Get the current hue of the circuit
         let currentHue = this.circuitBoard.getHue() % 360;
@@ -195,7 +207,9 @@ class TextColorUpdater {
     }
     
     startUpdating() {
-        setInterval(() => this.updateTextColor(), 500);
+        this.isRunning = true;
+        // Reduce frequency for better performance
+        setInterval(() => this.updateTextColor(), 750);
     }
 }
 
@@ -212,20 +226,28 @@ class IntroSequence {
     }
     
     start() {
-        // Preload the image
+        // Preload the image first to avoid blocking
         this.preloadImage(() => {
+            // Reduce initial delay to minimize perceived lag
             setTimeout(() => {
-                this.lineAnimation.classList.add('animate');
+                requestAnimationFrame(() => {
+                    this.lineAnimation.classList.add('animate');
+                });
                 
                 setTimeout(() => {
-                    this.lineAnimation.classList.add('expand');
-                    this.nameReveal.classList.add('visible');
+                    requestAnimationFrame(() => {
+                        this.lineAnimation.classList.add('expand');
+                        this.nameReveal.classList.add('visible');
+                    });
+                    
                     setTimeout(() => {
-                        this.lineAnimation.classList.add('fade-out');
+                        requestAnimationFrame(() => {
+                            this.lineAnimation.classList.add('fade-out');
+                        });
                     }, 500);
-                }, 2000);
+                }, 1500); // Reduced from 2000ms
                 
-            }, 3000);
+            }, 2000); // Reduced from 3000ms
         });
     }
     
