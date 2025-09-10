@@ -204,7 +204,8 @@ class SectionController {
             card.addEventListener('click', () => {
                 const projectTitle = card.querySelector('h3')?.textContent;
                 if (projectTitle && window.ProjectsData) {
-                    const project = window.ProjectsData.getProjectById(this.titleToId(projectTitle));
+                    const generatedId = this.titleToId(projectTitle);
+                    const project = window.ProjectsData.getProjectById(generatedId);
                     if (project) {
                         this.showProjectDetails(project);
                     }
@@ -233,6 +234,25 @@ class SectionController {
         popup.querySelector('.completion-percentage').textContent = `${project.completion}%`;
         popup.querySelector('.progress-fill').style.width = `${project.completion}%`;
         popup.querySelector('.status-description').textContent = project.statusDescription;
+        
+        // Update project status
+        const statusText = popup.querySelector('.project-status .status-text');
+        const statusDot = popup.querySelector('.project-status .status-dot');
+        if (statusText && statusDot) {
+            // Capitalize first letter of status
+            const formattedStatus = project.status.charAt(0).toUpperCase() + project.status.slice(1).replace('-', ' ');
+            statusText.textContent = `Status: ${formattedStatus}`;
+            
+            // Update status dot color based on project status
+            statusDot.className = 'status-dot'; // Reset classes
+            if (project.status === 'completed') {
+                statusDot.classList.add('completed');
+            } else if (project.status === 'in-progress') {
+                statusDot.classList.add('in-progress');
+            } else {
+                statusDot.classList.add('pending');
+            }
+        }
 
         // Update tech stack
         const techStackContainer = popup.querySelector('.tech-stack');

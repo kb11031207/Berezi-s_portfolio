@@ -26,6 +26,16 @@ class MatrixRain {
     init() {
         this.resizeCanvas();
         window.addEventListener("resize", () => this.resizeCanvas());
+        
+        // Check if device is mobile or has limited resources
+        this.isMobile = window.innerWidth <= 768 || 
+                       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Adjust performance settings for mobile
+        if (this.isMobile) {
+            this.performanceMode = true;
+        }
+        
         this.startAnimation();
     }
     
@@ -63,8 +73,11 @@ class MatrixRain {
     }
     
     startAnimation() {
-        // Reduce frequency for better performance - 15 FPS instead of 20 FPS
-        setInterval(() => this.draw(), 66);
+        // Adjust FPS based on device capabilities
+        const fps = this.performanceMode ? 10 : 15; // Further reduce FPS on mobile
+        const interval = 1000 / fps;
+        
+        setInterval(() => this.draw(), interval);
     }
 }
 
@@ -80,7 +93,11 @@ class CircuitBoard {
         this.hue = 0;
         this.isIntroPhase = true;
         
-        // Increase complexity after intro
+        // Check device capabilities
+        this.isMobile = window.innerWidth <= 768 || 
+                       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Increase complexity after intro (but keep it simpler on mobile)
         setTimeout(() => {
             this.isIntroPhase = false;
             this.initPaths();
@@ -104,8 +121,14 @@ class CircuitBoard {
     
     initPaths() {
         this.paths = [];
-        // Start with fewer paths for better performance, increase later
-        const pathCount = this.isIntroPhase ? 5 : 10;
+        // Adjust path count based on device and phase
+        let pathCount;
+        if (this.isMobile) {
+            pathCount = this.isIntroPhase ? 2 : 4; // Much fewer paths on mobile
+        } else {
+            pathCount = this.isIntroPhase ? 5 : 10;
+        }
+        
         for (let i = 0; i < pathCount; i++) {
             this.paths.push(new Path(
                 Math.random() * this.canvas.width, 
@@ -226,9 +249,12 @@ class IntroSequence {
     }
     
     start() {
+        // Check if mobile for faster intro
+        const isMobile = window.innerWidth <= 768;
+        const delays = isMobile ? { initial: 1000, expand: 800, fadeOut: 300 } : { initial: 2000, expand: 1500, fadeOut: 500 };
+        
         // Preload the image first to avoid blocking
         this.preloadImage(() => {
-            // Reduce initial delay to minimize perceived lag
             setTimeout(() => {
                 requestAnimationFrame(() => {
                     this.lineAnimation.classList.add('animate');
@@ -244,10 +270,10 @@ class IntroSequence {
                         requestAnimationFrame(() => {
                             this.lineAnimation.classList.add('fade-out');
                         });
-                    }, 500);
-                }, 1500); // Reduced from 2000ms
+                    }, delays.fadeOut);
+                }, delays.expand);
                 
-            }, 2000); // Reduced from 3000ms
+            }, delays.initial);
         });
     }
     

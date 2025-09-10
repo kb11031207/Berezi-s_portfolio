@@ -164,6 +164,98 @@ const skills = [
         name: 'Kubernetes',
         category: 'tools',
         icon: 'fas fa-dharmachakra'
+    },
+    
+    // AI/ML Technologies
+    {
+        id: 'machine-learning',
+        name: 'Machine Learning',
+        category: 'ai-ml',
+        icon: 'fas fa-brain'
+    },
+    {
+        id: 'tensorflow',
+        name: 'TensorFlow',
+        category: 'ai-ml',
+        icon: 'fas fa-robot'
+    },
+    {
+        id: 'computer-vision',
+        name: 'Computer Vision',
+        category: 'ai-ml',
+        icon: 'fas fa-eye'
+    },
+    {
+        id: 'data-science',
+        name: 'Data Science',
+        category: 'ai-ml',
+        icon: 'fas fa-chart-line'
+    },
+    
+    // Hardware & Embedded
+    {
+        id: 'arduino',
+        name: 'Arduino',
+        category: 'hardware',
+        icon: 'fas fa-microchip'
+    },
+    {
+        id: 'raspberry-pi',
+        name: 'Raspberry Pi',
+        category: 'hardware',
+        icon: 'fab fa-raspberry-pi'
+    },
+    
+    // Mobile Development
+    {
+        id: 'kotlin',
+        name: 'Kotlin',
+        category: 'languages',
+        icon: 'fas fa-mobile-alt'
+    },
+    {
+        id: 'android',
+        name: 'Android',
+        category: 'frameworks',
+        icon: 'fab fa-android'
+    },
+    {
+        id: 'mobile-development',
+        name: 'Mobile Development',
+        category: 'frameworks',
+        icon: 'fas fa-mobile-alt'
+    },
+    {
+        id: 'api-integration',
+        name: 'API Integration',
+        category: 'tools',
+        icon: 'fas fa-plug'
+    },
+    {
+        id: 'ui-ux-design',
+        name: 'UI/UX Design',
+        category: 'design',
+        icon: 'fas fa-palette'
+    },
+    
+    // Algorithms & Computer Science
+    {
+        id: 'algorithms',
+        name: 'Algorithms',
+        category: 'computer-science',
+        icon: 'fas fa-project-diagram'
+    },
+    {
+        id: 'data-structures',
+        name: 'Data Structures',
+        category: 'computer-science',
+        icon: 'fas fa-sitemap'
+    },
+    {
+        id: 'performance-optimization',
+        name: 'Performance Optimization',
+        category: 'computer-science',
+        icon: 'fas fa-tachometer-alt'
     }
 ];
 

@@ -514,6 +514,49 @@ h2 {
     animation: pulse 2s infinite;
 }
 
+/* Status dot colors for different project statuses */
+.status-dot.completed {
+    background: #00ff8c; /* Green for completed */
+    box-shadow: 0 0 10px rgba(0, 255, 140, 0.5);
+}
+
+.status-dot.in-progress {
+    background: #ffaa00; /* Orange for in-progress */
+    box-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+    animation: pulse-orange 2s infinite;
+}
+
+.status-dot.pending {
+    background: #ff4444; /* Red for pending */
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+    animation: pulse-red 2s infinite;
+}
+
+/* Additional pulse animations for different colors */
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 170, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 170, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 170, 0, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+    }
+}
+
 .project-header h3 {
     color: #00ff8c;
     font-family: 'Courier New', monospace;
@@ -839,6 +882,39 @@ h2 {
 .resume-content iframe {
     background: white;
     border-radius: 5px;
+}
+
+/* Resume download buttons */
+.resume-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.resume-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #00ff8c;
+    color: #00ff8c;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.resume-download-btn:hover {
+    background: #00ff8c;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 255, 140, 0.5);
+}
+
+.resume-download-btn i {
+    font-size: 1rem;
 }
 
 .skills-section {
@@ -1319,5 +1395,450 @@ h2 {
     background: rgba(0, 255, 140, 0.2);
     border-color: #00ff8c;
     color: #00ff8c;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN - MOBILE FIRST APPROACH
+   ============================================================================= */
+
+/* Base styles are mobile-first, then we add larger screen styles */
+
+/* Small devices (phones, 576px and up) */
+@media (max-width: 575.98px) {
+    /* Typography adjustments for mobile */
+    .name-reveal h1 {
+        font-size: 3rem !important;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        margin: 10px 0;
+    }
+    
+    .name-reveal h2 {
+        font-size: 1.5rem !important;
+        margin: 5px 0;
+    }
+    
+    /* Profile image sizing */
+    .profile-image img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Button container adjustments */
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .glow-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        width: 200px;
+        justify-content: center;
+    }
+    
+    /* Corner buttons positioning */
+    .about-corner-button,
+    .skills-corner-button,
+    .resume-button {
+        position: fixed;
+        z-index: 1005;
+    }
+    
+    .about-corner-button {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .skills-corner-button {
+        bottom: 10px; /* Back to original position */
+        right: 10px;
+    }
+    
+    .resume-button {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .about-corner-button .glow-button,
+    .skills-corner-button .glow-button,
+    .resume-button .glow-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        width: auto;
+        min-width: 80px;
+    }
+    
+    /* Social footer adjustments - compact layout to avoid overlap */
+    .social-footer {
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+    }
+    
+    .social-icons {
+        justify-content: flex-start;
+        gap: 8px;
+        padding: 4px 8px;
+        flex-wrap: nowrap; /* Don't wrap to keep compact */
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        border: 1px solid #00ff8c;
+        max-width: calc(100vw - 100px); /* Leave space for skills button */
+        overflow-x: auto; /* Allow scroll if needed */
+    }
+    
+    .social-icon {
+        font-size: 0.9rem; /* Slightly smaller */
+        flex-shrink: 0; /* Don't shrink icons */
+    }
+    
+    /* Modal/Popup adjustments */
+    .about-container,
+    .projects-container,
+    .resume-container,
+    .skills-container {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+        max-height: 85vh;
+    }
+    
+    .popup-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+        max-height: 85vh;
+    }
+    
+    /* Projects grid mobile layout */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .project-card {
+        padding: 15px;
+    }
+    
+    /* Skills grid mobile layout */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .skill-card {
+        padding: 15px;
+    }
+    
+    /* Filter buttons mobile layout */
+    .project-filters,
+    .skills-filters {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .filter-btn,
+    .skill-filter-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        flex: 1;
+        min-width: 80px;
+        text-align: center;
+    }
+    
+    /* Image slider mobile adjustments */
+    .project-slider {
+        height: 250px;
+    }
+    
+    .slider-btn {
+        padding: 10px 12px;
+        font-size: 1.2rem;
+    }
+    
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+    
+    /* Resume mobile optimization */
+    .resume-container {
+        height: 95vh; /* Use almost full screen height */
+        padding: 15px; /* Reduce padding for more space */
+    }
+    
+    .resume-content {
+        height: calc(100% - 80px); /* Adjust for header + buttons */
+        margin-top: 15px;
+    }
+    
+    .resume-content iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 5px;
+        /* Remove scaling, let iframe handle mobile display */
+        transform: none;
+    }
+    
+    /* Resume buttons mobile styling */
+    .resume-actions {
+        flex-direction: row; /* Keep horizontal for better space usage */
+        gap: 8px;
+        margin-top: 10px;
+        justify-content: space-between;
+    }
+    
+    .resume-download-btn {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+        justify-content: center;
+        min-height: 44px; /* Touch target */
+        flex: 1; /* Equal width buttons */
+        text-align: center;
+    }
+    
+    /* Hide iframe on very small screens and show download options prominently */
+    @media (max-width: 480px) {
+        .resume-content iframe {
+            display: none;
+        }
+        
+        .resume-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #00ff8c;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .resume-content::before {
+            content: "📄 Resume Preview";
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #00ff8c;
+        }
+        
+        .resume-content::after {
+            content: "Use the buttons above to view or download the full resume";
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+    }
+    
+    /* Terminal text mobile adjustments */
+    .terminal-text {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    /* Section headers mobile */
+    .section-header h2,
+    .about-header h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Canvas performance optimization for mobile */
+    canvas {
+        will-change: auto; /* Reduce will-change for better mobile performance */
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .name-reveal h1 {
+        font-size: 4rem;
+        letter-spacing: 3px;
+    }
+    
+    .name-reveal h2 {
+        font-size: 2rem;
+    }
+    
+    .profile-image img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .button-container {
+        flex-direction: row;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .glow-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+    }
+    
+    .about-container,
+    .projects-container,
+    .resume-container,
+    .skills-container {
+        width: 90%;
+        padding: 25px;
+    }
+    
+    .popup-content {
+        width: 90%;
+        padding: 25px;
+    }
+    
+    .project-slider {
+        height: 300px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .name-reveal h1 {
+        font-size: 5rem;
+        letter-spacing: 4px;
+    }
+    
+    .name-reveal h2 {
+        font-size: 2.2rem;
+    }
+    
+    .profile-image img {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 992px) {
+    /* Default styles already optimized for desktop */
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Landscape orientation specific adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .name-reveal h1 {
+        font-size: 2.5rem;
+        margin: 5px 0;
+    }
+    
+    .name-reveal h2 {
+        font-size: 1.3rem;
+        margin: 5px 0;
+    }
+    
+    .profile-image img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .button-container {
+        gap: 8px;
+    }
+    
+    .glow-button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .social-icons {
+        padding: 6px 12px;
+        gap: 12px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets for better mobile usability */
+    .glow-button,
+    .filter-btn,
+    .skill-filter-btn,
+    .close-button {
+        min-height: 44px; /* Apple's recommended minimum touch target */
+        min-width: 44px;
+    }
+    
+    .project-card,
+    .skill-card {
+        min-height: 44px;
+        cursor: default; /* Remove cursor pointer on touch devices */
+    }
+    
+    /* Remove hover effects on touch devices */
+    .glow-button:hover,
+    .filter-btn:hover,
+    .skill-filter-btn:hover,
+    .project-card:hover,
+    .skill-card:hover,
+    .social-icon:hover {
+        transform: none;
+        box-shadow: none;
+        background: inherit;
+        color: inherit;
+    }
+    
+    /* Add active states for touch feedback */
+    .glow-button:active {
+        background: #00ff8c;
+        color: black;
+        transform: scale(0.98);
+    }
+    
+    .project-card:active,
+    .skill-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    /* Disable resource-intensive animations */
+    .line-animation,
+    .matrix-rain,
+    .circuit-board {
+        animation: none !important;
+    }
+    
+    canvas {
+        display: none; /* Hide canvas animations for better performance */
+    }
 }
 
