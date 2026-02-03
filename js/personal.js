@@ -256,6 +256,50 @@ const skills = [
         name: 'Performance Optimization',
         category: 'computer-science',
         icon: 'fas fa-tachometer-alt'
+    },
+    
+    // Additional Skills for SLIAC Project
+    {
+        id: 'csharp',
+        name: 'C#',
+        category: 'languages',
+        icon: 'fab fa-microsoft'
+    },
+    {
+        id: 'asp-net-core',
+        name: 'ASP.NET Core',
+        category: 'frameworks',
+        icon: 'fab fa-microsoft'
+    },
+    {
+        id: 'rest-api',
+        name: 'REST API',
+        category: 'tools',
+        icon: 'fas fa-plug'
+    },
+    {
+        id: 'sql-server',
+        name: 'SQL Server',
+        category: 'tools',
+        icon: 'fas fa-database'
+    },
+    {
+        id: 'jwt',
+        name: 'JWT',
+        category: 'tools',
+        icon: 'fas fa-key'
+    },
+    {
+        id: 'full-stack',
+        name: 'Full Stack',
+        category: 'frameworks',
+        icon: 'fas fa-layer-group'
+    },
+    {
+        id: 'docker',
+        name: 'Docker',
+        category: 'tools',
+        icon: 'fab fa-docker'
     }
 ];
 
