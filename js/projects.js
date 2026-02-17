@@ -11,7 +11,7 @@ const projects = [
         title: 'Telemetry Application',
         category: ['in-progress', 'featured'],
         status: 'in-progress',
-        completion: 50,
+        completion: 80,
         description: 'Developing an application for the solar car team to monitor and visualize telemetry data in real-time.',
         overview: 'A real-time telemetry monitoring system for the solar car team that collects, processes, and visualizes data from various sensors.',
         role: 'Lead Developer responsible for project management, system architecture, backend development, and real-time data processing pipeline.',
