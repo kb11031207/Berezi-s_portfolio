@@ -140,7 +140,7 @@ const projects = [
         skills: ['java', 'algorithms', 'data-structures', 'python', 'performance-optimization'],
         images: [
             'images/cc.jpg',
-            'images/cc2.jpg'
+            'images/cc2.jpg' 
         ],
         sourceLink: 'https://github.com/kb11031207/ukonnen_v2',
         demoLink: null
@@ -151,11 +151,11 @@ const projects = [
         category: ['completed', 'featured'],
         status: 'completed',
         completion: 100,
-        description: 'Full-stack fantasy football web app for the St. Louis Intercollegiate Athletic Conference (SLIAC). Users build squads, join leagues, and earn points from real SLIAC player stats. Built with React + Vite frontend and ASP.NET Core 8 REST API with JWT auth.',
+        description: 'Fantasy football web app for the St. Louis Intercollegiate Athletic Conference D3 (SLIAC). Made originally for me and and my friends to be able to play fantasy soccer together since none existed . Users build squads, and earn points based on real SLIAC player stats. Users can compete against join or create leagues to compete against friends. Built with React + Vite frontend and ASP.NET Core 8 REST API with JWT auth.',
         overview: 'SLIAC Fantasy Football is a full-stack web application that lets users manage fantasy squads and compete in leagues using real SLIAC soccer data. The backend is a clean-layered ASP.NET Core 8 API (controllers, services, repositories, Dapper + SQL Server) with JWT authentication, league/squad management, gameweek tracking, and automated points calculation. A Python scraper pipeline ingests teams, players, fixtures, and stats. The frontend is a React + Vite SPA that consumes the API. The project demonstrates REST API design, auth, relational data modeling, and full-stack integration.',
         role: 'Full-stack developer: designed and implemented the API (ASP.NET Core 8, Dapper, SQL Server), JWT auth and resource-based authorization, service/repository layers, league and squad business logic, points calculation, and integration with a React + Vite frontend. Contributed to data pipeline (Python scrapers) and database schema. Delivered a deployed app with Docker support.',
-        challenges: 'Implementing correct fantasy scoring rules across positions (goals, assists, clean sheets, cards, shots, etc.), modeling leagues/squads/gameweeks and keeping data consistent, securing endpoints with JWT and resource ownership, and integrating scraped SLIAC data (HTML/PDF) into a reliable pipeline. Addressed validation, error handling, and API design for a smooth frontend experience.',
-        statusDescription: 'Completed full-stack SLIAC Fantasy Football app with live frontend at sliacfantasy.kberezi.tech. Backend API supports auth, leagues, squads, gameweeks, fixtures, and player stats with Swagger documentation. Data is fed by Python scrapers; app is containerized and suitable for portfolio demonstration.',
+        challenges: 'Getting reliable data from the SLIAC websites and setting up a proper ETL pipeline, especially for updating the data after the first run. This includes fetching player stats after each game, defining business rules such as when to run cron jobs to refresh stats, and handling edge cases like fixture changes due to bad weather. We also had to implement squad monitoring, and the logic for player scoring was challenging because the SLIAC website only provides a limited set of tracked statistics.',
+        statusDescription: 'Completed full-stack SLIAC Fantasy Football app with live frontend at sliacfantasy.kberezi.tech. Backend API supports auth, leagues, squads, gameweeks, fixtures, and player stats with Swagger documentation. Data is fed by Python scrapers; app is containerized for easy deployment.',
         techStack: ['ASP.NET Core 8', 'C#', 'SQL Server', 'React', 'Swagger/OpenAPI', 'Python', 'Docker'],
         skills: ['csharp', 'asp-net-core', 'rest-api', 'react', 'sql-server', 'jwt', 'full-stack', 'docker'],
         images: [
