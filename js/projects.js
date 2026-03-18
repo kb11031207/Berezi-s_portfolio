@@ -129,7 +129,7 @@ const projects = [
         demoLink: 'https://youtu.be/Q9Z0BLLmeIo'
     },
     {
-        id: 'ukkonen-suffix-tree',
+        id: 'ukkonens-suffix-tree-implementation',
         title: 'Ukkonen\'s Suffix Tree Implementation',
         category: ['completed'],
         status: 'completed',
@@ -161,14 +161,13 @@ const projects = [
         techStack: ['ASP.NET Core 8', 'C#', 'SQL Server', 'React', 'Swagger/OpenAPI', 'Python', 'Docker'],
         skills: ['csharp', 'asp-net-core', 'rest-api', 'react', 'sql-server', 'jwt', 'full-stack', 'docker'],
         images: [
-            'images/display.mp4'
             // Add a screenshot or GIF, e.g. 'images/SliacFantasyDemo.gif' or 'images/SliacFantasyScreenshot.png'
         ],
         sourceLink: 'https://github.com/kb11031207/CSCI_316_Proj',
         demoLink: 'https://sliacfantasy.kberezi.tech'
     },
     {
-        id: 'argus-payment-guardian',
+        id: 'argus--payment-guardian-for-ai-agents',
         title: 'Argus — Payment Guardian for AI Agents',
         category: ['completed', 'featured'],
         status: 'completed',
@@ -180,7 +179,9 @@ const projects = [
         statusDescription: 'Completed and submitted to the LIVE AI Ivy Plus Hackathon 2026. Full end-to-end demo live: agent browses real websites, Argus intercepts, evaluates, issues virtual card, and agent completes checkout. Dashboard live at argus-principia.vercel.app make it linked.',
         techStack: ['Python', 'FastAPI', 'SQLite', 'SQLAlchemy', 'Google ADK', 'Gemini 2.0 Flash', 'Google A2A Protocol', 'JWT', 'WebSockets', 'Hedera HCS', 'Docker', 'React', 'Vite'],
         skills: ['python', 'fastapi', 'rest-api', 'jwt', 'websockets', 'docker', 'ai-integration', 'system-architecture', 'full-stack'],
-        images: [],
+        images: [
+            'https://youtu.be/wByC8FPOnbc'
+        ],
         sourceLink: 'https://devpost.com/software/argus-n507tw?_gl=1*1pcg0co*_gcl_au*NzY2NDgyMTcyLjE3Njk4MjE2NzI.*_ga*OTI3MjkzMDguMTc2OTgyMTY3Mg..*_ga_0YHJK3Y10M*czE3NzM4NDcyODEkbzEzJGcxJHQxNzczODQ4Mzg5JGo0OCRsMCRoMA..',
         demoLink: 'https://argus-principia.vercel.app'
     },

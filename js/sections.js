@@ -294,6 +294,18 @@ class SectionController {
                 })
                 .join('');
             
+            // If the project has a demoLink (e.g., YouTube), make media clickable
+            const mediaElements = sliderContainer.querySelectorAll('.project-media');
+            mediaElements.forEach(el => {
+                if (project.demoLink) {
+                    el.style.cursor = 'pointer';
+                    el.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        window.open(project.demoLink, '_blank');
+                    });
+                }
+            });
+            
             sliderDots.innerHTML = project.images
                 .map((_, i) => `<div class="dot${i === 0 ? ' active' : ''}"></div>`)
                 .join('');
