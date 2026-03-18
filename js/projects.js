@@ -8,24 +8,24 @@
 const projects = [
     {
         id: 'telemetry-application',
-        title: 'Telemetry Application',
+        title: 'Solar Car Telemetry System',
         category: ['in-progress', 'featured'],
         status: 'in-progress',
-        completion: 80,
-        description: 'Developing an application for the solar car team to monitor and visualize telemetry data in real-time.',
-        overview: 'A real-time telemetry monitoring system for the solar car team that collects, processes, and visualizes data from various sensors.',
-        role: 'Lead Developer responsible for project management, system architecture, backend development, and real-time data processing pipeline.',
-        challenges: 'Handling real-time data streams from multiple sensors, implementing efficient data storage, and creating responsive visualizations. Solved using WebSocket connections and optimized database schemas.',
-        statusDescription: 'Currently waiting on the firmware and hardware for the board responsible for transmitting the data to the database to be completed.',
-        techStack: ['Flutter', 'Javascript', 'Snowflake'],
-        skills: ['flutter', 'javascript', 'sql'],
+        completion: 70,
+        description: 'End-to-end telemetry system for a solar race car that streams live vehicle data from embedded sensors to the cloud for real-time monitoring and visualization.',
+        overview: 'A full-stack telemetry platform built for a solar race car. A Portenta C33 microcontroller reads vehicle data over CAN bus and publishes it to an MQTT broker via 4G cellular. A backend server subscribes to the broker, persists the data to a time-series database, and forwards it to a frontend app for live visualization and decision-making — eliminating line-of-sight constraints during competition.',
+        role: 'Software Lead responsible for system architecture, embedded firmware (CAN bus data acquisition and MQTT transmission), backend server and database design, and cross-team coordination across embedded, frontend, and electrical.',
+        challenges: 'Bridging the embedded and cloud layers reliably — maintaining stable MQTT connections over cellular, handling bursty real-time data on the backend without dropping frames, and coordinating integration across embedded, frontend, and electrical sub-teams with different development timelines.',
+        statusDescription: 'Core pipeline (CAN → MQTT → server → DB) is functional. Waiting on finalized hardware and firmware from the board responsible for CAN data before full end-to-end testing can complete.',
+        techStack: ['C++', 'Arduino', 'Portenta C33', 'CAN Bus', 'MQTT', 'Node.js', 'Express.js', 'TimescaleDB', 'Flutter', 'Azure', 'Docker'],
+        skills: ['cpp', 'embedded', 'mqtt', 'javascript', 'sql', 'flutter', 'docker', 'azure'],
         images: [
             'images/telem1.jpg',
             'images/telem2.jpg',
             'images/telem3.jpg'
         ],
-        sourceLink: null, // Add GitHub link when available
-        demoLink: null    // Add demo link when available
+        sourceLink: null,
+        demoLink: null
     },
     {
         id: 'credit-score-prediction-model',
@@ -81,8 +81,11 @@ const projects = [
         techStack: ['Python', 'TensorFlow', 'TensorFlow Lite', 'OpenCV', 'PiCamera2', 'Arduino C++', 'VGG16', 'Transfer Learning', 'Serial Communication'],
         skills: ['python', 'machine-learning', 'computer-vision', 'tensorflow', 'arduino', 'raspberry-pi', 'cpp'],
         images: [
-            'images/cc.jpg',
-            'images/cc2.jpg'
+            'images/ball_bearning1.png',
+            'images/ball_bearning2.png',
+            'images/ball_bearning3.png',
+            'images/ball_bearning4.png',
+            'images/ball_bearing5.png'
         ],
         sourceLink: 'https://github.com/kb11031207/Ball_Bearing_Classification',
         demoLink: null
@@ -139,8 +142,7 @@ const projects = [
         techStack: ['Java', 'Algorithms', 'Data Structures', 'Python', 'Performance Testing', 'Algorithm Validation'],
         skills: ['java', 'algorithms', 'data-structures', 'python', 'performance-optimization'],
         images: [
-            'images/cc.jpg',
-            'images/cc2.jpg' 
+            'images/ukkonen.png'
         ],
         sourceLink: 'https://github.com/kb11031207/ukonnen_v2',
         demoLink: null
@@ -159,11 +161,30 @@ const projects = [
         techStack: ['ASP.NET Core 8', 'C#', 'SQL Server', 'React', 'Swagger/OpenAPI', 'Python', 'Docker'],
         skills: ['csharp', 'asp-net-core', 'rest-api', 'react', 'sql-server', 'jwt', 'full-stack', 'docker'],
         images: [
+            'images/display.mp4'
             // Add a screenshot or GIF, e.g. 'images/SliacFantasyDemo.gif' or 'images/SliacFantasyScreenshot.png'
         ],
         sourceLink: 'https://github.com/kb11031207/CSCI_316_Proj',
         demoLink: 'https://sliacfantasy.kberezi.tech'
-    }
+    },
+    {
+        id: 'argus-payment-guardian',
+        title: 'Argus — Payment Guardian for AI Agents',
+        category: ['completed', 'featured'],
+        status: 'completed',
+        completion: 100,
+        description: 'A payment authorization layer for AI shopping agents. Argus intercepts purchases before money moves, verifies intent using a two-stage Gemini pipeline, enforces spending rules, and issues scoped single-use virtual cards for approved transactions.',
+        overview: 'As AI agents begin handling real purchases, Argus sits between any shopping agent and the payment. When an agent tries to buy something, Argus intercepts the request, runs a two-stage AI evaluation pipeline to verify the purchase matches what the user actually asked for, enforces configurable spending rules (transaction limits, merchant whitelists, category budgets), and either issues a scoped virtual card or escalates to the user for real-time approval. An immutable on-chain audit trail is recorded via Hedera Consensus Service. Built for the LIVE AI Ivy Plus Hackathon 2026.',
+        role: 'Co-designed system architecture end-to-end. Built the Core API (FastAPI): full evaluation pipeline, JWT auth, WebSocket real-time updates, rules engine, and two-stage Gemini integration. Implemented the A2A endpoint so Argus is discoverable by any A2A-compatible agent. Built the ADK plugin middleware that intercepts agent purchase calls and routes them through Argus without modifying the agent itself. Handled Docker containerization and cloud deployment.',
+        challenges: 'Designing the prompt injection defense: the evaluation model is intentionally isolated from the browsing context — it only sees the original user conversation, never the agent\'s potentially compromised browsing session. Also coordinated a parallel build across the teams by writing a full data spec and API contract before any code was written, allowing the frontend and backend to be developed simultaneously without blocking each other.',
+        statusDescription: 'Completed and submitted to the LIVE AI Ivy Plus Hackathon 2026. Full end-to-end demo live: agent browses real websites, Argus intercepts, evaluates, issues virtual card, and agent completes checkout. Dashboard live at argus-principia.vercel.app make it linked.',
+        techStack: ['Python', 'FastAPI', 'SQLite', 'SQLAlchemy', 'Google ADK', 'Gemini 2.0 Flash', 'Google A2A Protocol', 'JWT', 'WebSockets', 'Hedera HCS', 'Docker', 'React', 'Vite'],
+        skills: ['python', 'fastapi', 'rest-api', 'jwt', 'websockets', 'docker', 'ai-integration', 'system-architecture', 'full-stack'],
+        images: [],
+        sourceLink: 'https://devpost.com/software/argus-n507tw?_gl=1*1pcg0co*_gcl_au*NzY2NDgyMTcyLjE3Njk4MjE2NzI.*_ga*OTI3MjkzMDguMTc2OTgyMTY3Mg..*_ga_0YHJK3Y10M*czE3NzM4NDcyODEkbzEzJGcxJHQxNzczODQ4Mzg5JGo0OCRsMCRoMA..',
+        demoLink: 'https://argus-principia.vercel.app'
+    },
+    
    
 ];
 

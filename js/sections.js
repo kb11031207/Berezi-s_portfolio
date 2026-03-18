@@ -278,7 +278,20 @@ class SectionController {
         
         if (project.images && project.images.length > 0) {
             sliderContainer.innerHTML = project.images
-                .map(img => `<img src="${img}" alt="Project screenshot">`)
+                .map(media => {
+                    const lower = media.toLowerCase();
+                    const isVideo = lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.ogg');
+                    
+                    if (isVideo) {
+                        return `
+                            <video class="project-media" src="${media}" controls muted loop playsinline>
+                                Your browser does not support the video tag.
+                            </video>
+                        `;
+                    }
+                    
+                    return `<img class="project-media" src="${media}" alt="Project screenshot">`;
+                })
                 .join('');
             
             sliderDots.innerHTML = project.images
@@ -341,7 +354,7 @@ class SectionController {
     // Slider functionality
     showSlide(n) {
         const popup = this.sections.projectDetails;
-        const slides = popup.querySelectorAll('.slider-container img');
+        const slides = popup.querySelectorAll('.slider-container .project-media');
         const dots = popup.querySelectorAll('.dot');
         
         if (slides.length === 0) return;
