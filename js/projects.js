@@ -7,7 +7,7 @@
 
 const projects = [
     {
-        id: 'telemetry-application',
+        id: 'solar-car-telemetry-system',
         title: 'Solar Car Telemetry System',
         category: ['in-progress', 'featured'],
         status: 'in-progress',
@@ -142,7 +142,7 @@ const projects = [
         techStack: ['Java', 'Algorithms', 'Data Structures', 'Python', 'Performance Testing', 'Algorithm Validation'],
         skills: ['java', 'algorithms', 'data-structures', 'python', 'performance-optimization'],
         images: [
-            'images/ukkonen.png'
+            'images/ukonen.png'
         ],
         sourceLink: 'https://github.com/kb11031207/ukonnen_v2',
         demoLink: null
@@ -180,10 +180,10 @@ const projects = [
         techStack: ['Python', 'FastAPI', 'SQLite', 'SQLAlchemy', 'Google ADK', 'Gemini 2.0 Flash', 'Google A2A Protocol', 'JWT', 'WebSockets', 'Hedera HCS', 'Docker', 'React', 'Vite'],
         skills: ['python', 'fastapi', 'rest-api', 'jwt', 'websockets', 'docker', 'ai-integration', 'system-architecture', 'full-stack'],
         images: [
-            'images/DevPostbanner.png'
+            'https://img.youtube.com/vi/wByC8FPOnbc/hqdefault.jpg'
         ],
         sourceLink: 'https://devpost.com/software/argus-n507tw?_gl=1*1pcg0co*_gcl_au*NzY2NDgyMTcyLjE3Njk4MjE2NzI.*_ga*OTI3MjkzMDguMTc2OTgyMTY3Mg..*_ga_0YHJK3Y10M*czE3NzM4NDcyODEkbzEzJGcxJHQxNzczODQ4Mzg5JGo0OCRsMCRoMA..',
-        demoLink: 'https://argus-principia.vercel.app'
+        demoLink: 'https://youtu.be/wByC8FPOnbc'
     },
     
    
