@@ -161,10 +161,10 @@ const projects = [
         techStack: ['ASP.NET Core 8', 'C#', 'SQL Server', 'React', 'Swagger/OpenAPI', 'Python', 'Docker'],
         skills: ['csharp', 'asp-net-core', 'rest-api', 'react', 'sql-server', 'jwt', 'full-stack', 'docker'],
         images: [
-            // Add a screenshot or GIF, e.g. 'images/SliacFantasyDemo.gif' or 'images/SliacFantasyScreenshot.png'
+            'https://img.youtube.com/vi/p-rbLdPPXnM/hqdefault.jpg'
         ],
         sourceLink: 'https://github.com/kb11031207/CSCI_316_Proj',
-        demoLink: 'https://sliacfantasy.kberezi.tech'
+        demoLink: 'https://sliacfantasy.kberezi.tech/'
     },
     {
         id: 'argus--payment-guardian-for-ai-agents',
@@ -185,8 +185,8 @@ const projects = [
         sourceLink: 'https://devpost.com/software/argus-n507tw?_gl=1*1pcg0co*_gcl_au*NzY2NDgyMTcyLjE3Njk4MjE2NzI.*_ga*OTI3MjkzMDguMTc2OTgyMTY3Mg..*_ga_0YHJK3Y10M*czE3NzM4NDcyODEkbzEzJGcxJHQxNzczODQ4Mzg5JGo0OCRsMCRoMA..',
         demoLink: 'https://youtu.be/wByC8FPOnbc'
     },
-    
-   
+
+
 ];
 
 // =============================================================================
@@ -215,7 +215,7 @@ function getProjectById(id) {
 
 // Get projects by skill
 function getProjectsBySkill(skill) {
-    return projects.filter(project => 
+    return projects.filter(project =>
         project.skills.includes(skill.toLowerCase())
     );
 }
