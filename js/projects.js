@@ -142,7 +142,10 @@ const projects = [
         techStack: ['Java', 'Algorithms', 'Data Structures', 'Python', 'Performance Testing', 'Algorithm Validation'],
         skills: ['java', 'algorithms', 'data-structures', 'python', 'performance-optimization'],
         images: [
-            'images/ukonen.png'
+            'images/ukonen1.png',
+            'images/ukonen2.png',
+            'images/ukonen3.png'
+
         ],
         sourceLink: 'https://github.com/kb11031207/ukonnen_v2',
         demoLink: null
