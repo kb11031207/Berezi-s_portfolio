@@ -74,7 +74,7 @@ const personalInfo = {
     ],
     
     // Resume link
-    resumeUrl: "https://docs.google.com/document/d/e/2PACX-1vSvkOsQEIvGBSZFN1RfcEItukQo_LOx7DqUMJWmadBUffSGRRqZEVr0yXaoTX-LJ6XHhuU8Atcdm3Hw/pub?embedded=true"
+    resumeUrl: "https://docs.google.com/document/d/e/2PACX-1vQyZa54lSgJM1y0KOmsIy6WCRxqxqmwqJ9pepmGCjLpGxcx0aBA7Ez-7gb2bfi7MIjoQzv5LFhoNE_T/pub?embedded=true"
 };
 
 // =============================================================================
