@@ -161,7 +161,9 @@ const projects = [
         techStack: ['ASP.NET Core 8', 'C#', 'SQL Server', 'React', 'Swagger/OpenAPI', 'Python', 'Docker'],
         skills: ['csharp', 'asp-net-core', 'rest-api', 'react', 'sql-server', 'jwt', 'full-stack', 'docker'],
         images: [
-            'https://img.youtube.com/vi/p-rbLdPPXnM/hqdefault.jpg'
+            'https://img.youtube.com/vi/p-rbLdPPXnM/hqdefault.jpg',
+            'images/image1.png',
+            'images/image.png',
         ],
         sourceLink: 'https://github.com/kb11031207/CSCI_316_Proj',
         demoLink: 'https://sliacfantasy.kberezi.tech/'
